@@ -19,8 +19,8 @@ BuildRequires: gcc-c++
 %define NAGIOSUSR    nagios
 
 # nagios paths
-%define eondir		/srv/rgm
-%define eonconfdir	/srv/rgm/%{name}
+%define rgmdir		/srv/rgm
+%define rgmconfdir	/srv/rgm/%{name}
 %define linkdir		%{rgmdir}/%{name}
 %define datadir 	%{linkdir}-%{version}
 %define bindir 		%{datadir}/bin
