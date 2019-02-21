@@ -15,13 +15,13 @@ Requires: nagios >= 3.0
 BuildRequires: gcc-c++
 
 # eyesofnetwork group and users
-%define APPLIANCEGRP eyesofnetwork
+%define APPLIANCEGRP rgm
 %define NAGIOSUSR    nagios
 
 # nagios paths
-%define eondir		/srv/eyesofnetwork
-%define eonconfdir	/srv/eyesofnetworkconf/%{name}
-%define linkdir		%{eondir}/%{name}
+%define eondir		/srv/rgm
+%define eonconfdir	/srv/rgm/%{name}
+%define linkdir		%{rgmdir}/%{name}
 %define datadir 	%{linkdir}-%{version}
 %define bindir 		%{datadir}/bin
 %define libdir 		%{datadir}/lib
@@ -47,7 +47,7 @@ install -d -m0755 %{buildroot}/%{libdir}/
 install -p -m0755 src/unixcat %{buildroot}/%{bindir}/
 install -p -m0644 src/livestatus.o %{buildroot}/%{libdir}/
 
-cd %{buildroot}%{eondir}
+cd %{buildroot}%{rgmdir}
 ln -nsf %{name}-%{version} %{name}
 cd -
 
