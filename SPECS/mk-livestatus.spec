@@ -1,7 +1,7 @@
 Summary: Mk-livestatus is a Nagios Event Broker
 Name: 	 mk-livestatus
 Version: 1.2.8p17
-Release: 0.eon
+Release: 0.rgm
 License: GPL
 Group: 	 Applications/System
 URL: 	 http://mathias-kettner.de/
@@ -60,6 +60,9 @@ rm -rf %{buildroot}
 %{datadir}
 
 %changelog
+* Thu Feb 21 2019 Samuel RONCIAUX <samuel.ronciaux@gmail.com> - 1.2.8p17-0.rgm
+- Initial RGM fork
+
 * Mon Feb 20 2017 Jean-Philippe Levy <jeanphilippe.levy@gmail.com> - 1.2.8p17-0.eon
 - upgrade to version 1.2.8p17
 
