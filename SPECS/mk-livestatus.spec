@@ -61,7 +61,7 @@ rm -rf %{buildroot}
 
 %changelog
 * Thu Feb 21 2019 Samuel RONCIAUX <samuel.ronciaux@gmail.com> - 1.2.8p17-0.rgm
-- Initial RGM fork
+- Initial RGM fork 
 
 * Mon Feb 20 2017 Jean-Philippe Levy <jeanphilippe.levy@gmail.com> - 1.2.8p17-0.eon
 - upgrade to version 1.2.8p17
