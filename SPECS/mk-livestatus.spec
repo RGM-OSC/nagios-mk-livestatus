@@ -14,14 +14,8 @@ Requires: nagios >= 3.0
 
 BuildRequires: gcc-c++
 
-# eyesofnetwork group and users
-%define APPLIANCEGRP rgm
-%define NAGIOSUSR    nagios
-
 # nagios paths
-%define rgmdir		/srv/rgm
-%define rgmconfdir	/srv/rgm/%{name}
-%define linkdir		%{rgmdir}/%{name}
+%define linkdir		%{rgm_path}/%{name}
 %define datadir 	%{linkdir}-%{version}
 %define bindir 		%{datadir}/bin
 %define libdir 		%{datadir}/lib
@@ -47,7 +41,7 @@ install -d -m0755 %{buildroot}/%{libdir}/
 install -p -m0755 src/unixcat %{buildroot}/%{bindir}/
 install -p -m0644 src/livestatus.o %{buildroot}/%{libdir}/
 
-cd %{buildroot}%{rgmdir}
+cd %{buildroot}%{rgm_path}
 ln -nsf %{name}-%{version} %{name}
 cd -
 
@@ -55,11 +49,14 @@ cd -
 rm -rf %{buildroot}
 
 %files
-%defattr(-, %{NAGIOSUSR}, %{APPLIANCEGRP}, 0755)
+%defattr(-, %{rgm_user_nagios}, %{rgm_group}, 0755)
 %{linkdir}
 %{datadir}
 
 %changelog
+* Wed Mar 20 2019 Samuel RONCIAUX <samuel.ronciaux@gmail.com> - 1.2.8p17-0.rgm
+- Add macro paths
+
 * Thu Feb 21 2019 Samuel RONCIAUX <samuel.ronciaux@gmail.com> - 1.2.8p17-0.rgm
 - Initial RGM fork 
 
