@@ -6,7 +6,7 @@ License: GPL
 Group: 	 Applications/System
 URL: 	 http://mathias-kettner.de/
 
-Source0: %{name}-%{version}.tar.gz
+Source0: %{name}.tar.gz
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
@@ -16,7 +16,7 @@ BuildRequires: gcc-c++
 
 # nagios paths
 %define linkdir		%{rgm_path}/%{name}
-%define datadir 	%{linkdir}-%{version}
+%define datadir 	%{linkdir}
 %define bindir 		%{datadir}/bin
 %define libdir 		%{datadir}/lib
 
@@ -24,17 +24,17 @@ BuildRequires: gcc-c++
 Livestatus make use of the Nagios Event Broker API and loads a binary module into your Nagios process. But other then NDO, Livestatus does not actively write out data. Instead, it opens a socket by which data can be retrieved on demand. 
 
 %prep
-%setup -T -b 0 -n %{name}-%{version}
+%setup -T -b 0 -n %{name}
 
 %build
-cd ../%{name}-%{version}
+cd ../%{name}
 %configure \
 	--bindir="%{bindir}" \
 	--libdir="%{bindir}" 
 make GYPFLAGS="-Dclang=0"
 
 %install
-cd ../%{name}-%{version}
+cd ../%{name}
 install -d -m0755 %{buildroot}/%{bindir}/
 install -d -m0755 %{buildroot}/%{libdir}/
 
@@ -42,7 +42,7 @@ install -p -m0755 src/unixcat %{buildroot}/%{bindir}/
 install -p -m0644 src/livestatus.o %{buildroot}/%{libdir}/
 
 cd %{buildroot}%{rgm_path}
-ln -nsf %{name}-%{version} %{name}
+#ln -nsf %{name}-%{version} %{name}
 cd -
 
 %clean
