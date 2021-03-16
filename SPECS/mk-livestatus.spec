@@ -16,7 +16,7 @@ BuildRequires: gcc-c++
 
 # nagios paths
 %define linkdir		%{rgm_path}/%{name}
-%define datadir 	%{linkdir}
+%define datadir 	%{linkdir}-%{version}
 %define bindir 		%{datadir}/bin
 %define libdir 		%{datadir}/lib
 
@@ -27,14 +27,14 @@ Livestatus make use of the Nagios Event Broker API and loads a binary module int
 %setup -T -b 0 -n %{name}
 
 %build
-cd ../%{name}
+cd ../%{name}-%{version}
 %configure \
 	--bindir="%{bindir}" \
 	--libdir="%{bindir}" 
 make GYPFLAGS="-Dclang=0"
 
 %install
-cd ../%{name}
+cd ../%{name}-%{version}
 install -d -m0755 %{buildroot}/%{bindir}/
 install -d -m0755 %{buildroot}/%{libdir}/
 
@@ -42,7 +42,7 @@ install -p -m0755 src/unixcat %{buildroot}/%{bindir}/
 install -p -m0644 src/livestatus.o %{buildroot}/%{libdir}/
 
 cd %{buildroot}%{rgm_path}
-#ln -nsf %{name}-%{version} %{name}
+ln -nsf %{name}-%{version} %{name}
 cd -
 
 %clean
