@@ -16,7 +16,7 @@ BuildRequires: gcc-c++
 
 # nagios paths
 %define linkdir		%{rgm_path}/%{name}
-%define datadir 	%{linkdir}-%{version}
+%define datadir 	%{linkdir}
 %define bindir 		%{datadir}/bin
 %define libdir 		%{datadir}/lib
 
@@ -42,7 +42,7 @@ install -p -m0755 src/unixcat %{buildroot}/%{bindir}/
 install -p -m0644 src/livestatus.o %{buildroot}/%{libdir}/
 
 cd %{buildroot}%{rgm_path}
-ln -nsf %{name}-%{version} %{name}
+#ln -nsf %{name}-%{version} %{name}
 cd -
 
 %clean
