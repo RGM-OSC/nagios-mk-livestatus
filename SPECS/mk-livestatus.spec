@@ -27,14 +27,14 @@ Livestatus make use of the Nagios Event Broker API and loads a binary module int
 %setup -T -b 0 -n %{name}
 
 %build
-cd ../%{name}-%{version}
+cd ../%{name}
 %configure \
 	--bindir="%{bindir}" \
 	--libdir="%{bindir}" 
 make GYPFLAGS="-Dclang=0"
 
 %install
-cd ../%{name}-%{version}
+cd ../%{name}
 install -d -m0755 %{buildroot}/%{bindir}/
 install -d -m0755 %{buildroot}/%{libdir}/
 
