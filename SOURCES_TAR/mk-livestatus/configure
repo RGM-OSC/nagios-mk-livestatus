@@ -2376,7 +2376,7 @@ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
-am__api_version='1.11'
+am__api_version='1.16'
 
 ac_aux_dir=
 for ac_dir in "$srcdir" "$srcdir/.." "$srcdir/../.."; do
@@ -4161,7 +4161,7 @@ else
   HAVE_DIET_FALSE=
 fi
 
-# automake 1.12 seems to require this, but automake 1.11 doesn't recognize it. :-P
+# automake 1.12 seems to require this, but automake 1.16 doesn't recognize it. :-P
 
 if test -n "$ac_tool_prefix"; then
   for ac_prog in ar lib "link -lib"
