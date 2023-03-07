@@ -32,12 +32,12 @@
 #include "nagios.h"
 
 extern char g_logfile_path[];
-pthread_t g_mainthread_id;
+pthread_t g_mainthread_id_local;
 FILE *g_logfile = 0;
 
 void open_logfile() {
     g_logfile = fopen(g_logfile_path, "a");
-    g_mainthread_id =
+    g_mainthread_id_local =
         pthread_self(); /* needed to determine main thread later */
     if (!g_logfile) {
         logger(LG_WARN, "Cannot open logfile %s: %s", g_logfile_path,
@@ -57,7 +57,7 @@ void logger(int priority, const char *loginfo, ...) {
     va_start(ap, loginfo);
 
     /* Only the main process may use the Nagios log methods */
-    if (!g_logfile || g_mainthread_id == pthread_self()) {
+    if (!g_logfile || g_mainthread_id_local == pthread_self()) {
         char buffer[8192];
         snprintf(buffer, 20, "livestatus: ");
         vsnprintf(buffer + strlen(buffer), sizeof(buffer) - strlen(buffer),
